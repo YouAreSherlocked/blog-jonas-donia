@@ -1,7 +1,8 @@
 import types from './types';
 
 const initialState = {
-  darkMode: false
+  darkMode: false,
+  country: "Switzerland"
 };
 
 const mainReducer = (state = initialState, action) => {

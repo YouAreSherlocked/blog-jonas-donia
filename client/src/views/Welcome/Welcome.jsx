@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 
 class Welcome extends Component {
+
+  countDays(returning) {
+    const dayInMillis = 24*60*60*1000;
+    const now = new Date();
+    const start = new Date(2019, 7, 14) ;
+    const end = new Date(2019, 11, 20) ;
+    const daysThere = Math.round(Math.abs((now.getTime() - start.getTime()) / (dayInMillis)));
+    const daysLeft = Math.round(Math.abs((now.getTime() - end.getTime()) / (dayInMillis)));
+    console.log(now)
+    console.log(end)
+    console.log(start)
+    return returning ? daysLeft : daysThere;
+  }
+
   render() {
     return(
       <section id="welcome">
         <p>Updates from</p>
         <h1>Donia & Jonas</h1>
         <div className="infos">
-          <p>Days in Adventure&emsp;<b>80</b></p>
-          <p>Days till return&emsp;<b>40</b></p>
+          <p>Days in Adventure&emsp;<b>{this.countDays()}</b></p>
+          <p>Days till return&emsp;<b>{this.countDays(true)}</b></p>
           <p>Current Country&emsp;<b>Mexico</b></p>
         </div>
       </section>

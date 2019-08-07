@@ -4,6 +4,7 @@ import Welcome from '../Welcome/Welcome';
 import Post from '../Post/Post';
 
 class Home extends Component {
+
   render() {
     return(
       <Fragment>
