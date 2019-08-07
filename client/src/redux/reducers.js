@@ -7,8 +7,8 @@ const initialState = {
 
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.SWITCH_MODE: {
-      return { ...state, darkMode: action.mode };
+    case types.CHANGE_COUNTRY: {
+      return { ...state, country: action.country };
     }
     default:
       return state;

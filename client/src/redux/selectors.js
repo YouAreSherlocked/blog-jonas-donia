@@ -1,5 +1,5 @@
-const getMode = state => state.darkMode;
+const getCountry = state => state.country;
 
 export default {
-  getMode
+  getCountry
 }

@@ -1,5 +1,5 @@
-const SWITCH_MODE = 'SWITCH_MODE';
+const CHANGE_COUNTRY = 'CHANGE_COUNTRY';
 
 export default {
-  SWITCH_MODE
+  CHANGE_COUNTRY
 }

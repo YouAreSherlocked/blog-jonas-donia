@@ -1,10 +1,10 @@
 import types from './types';
 
-export const switchMode = mode => ({
-  type: types.SWITCH_MODE,
-  mode: mode
+export const changeCountry = country => ({
+  type: types.CHANGE_COUNTRY,
+  country: country
 });
 
 export default {
-  switchMode
+  changeCountry
 }

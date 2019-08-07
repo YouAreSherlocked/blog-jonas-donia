@@ -23,7 +23,7 @@ class Welcome extends Component {
         <div className="infos">
           <p>Days in Adventure&emsp;<b>{this.countDays()}</b></p>
           <p>Days till return&emsp;<b>{this.countDays(true)}</b></p>
-          <p>Current Country&emsp;<b>Mexico</b></p>
+          <p>Current Country&emsp;<b>{this.props.country}</b></p>
         </div>
       </section>
     );
