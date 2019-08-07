@@ -1,5 +1,5 @@
-const getAllProjects = async () => {
-  const response = await fetch('projects');
+const getAllPosts = async () => {
+  const response = await fetch('posts');
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -8,11 +8,11 @@ const getAllProjects = async () => {
     return body;
 }
 
-const postProject = project => {
-  fetch('/projects', {
+const postPost = post => {
+  fetch('/posts', {
     method: 'POST',
     body: JSON.stringify({
-      ...project
+      ...post
     }),
     headers: {"Content-Type": "application/json"}
     }).then(res => {
@@ -23,8 +23,8 @@ const postProject = project => {
   });
 }
 
-const deleteAllProjects = () => {
-  fetch('/projects', {
+const deleteAllPosts = () => {
+  fetch('/posts', {
     method: 'DELETE',
     headers: {"Content-Type": "application/json"}
     }).then(res => {
@@ -36,7 +36,7 @@ const deleteAllProjects = () => {
 }
 
 export default {
-  getAllProjects,
-  postProject,
-  deleteAllProjects
+  getAllPosts,
+  postPost,
+  deleteAllPosts
 }

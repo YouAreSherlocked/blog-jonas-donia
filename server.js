@@ -21,28 +21,28 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
-// BLOGS
+// POSTS
 
-app.get('/blogs', (req, res) => {
-  db.collection('blogs').find().toArray((err, result) => {
+app.get('/posts', (req, res) => {
+  db.collection('posts').find().toArray((err, result) => {
     res.send({
-      blogs: result
+      posts: result
     })
   })
 })
 
-app.post('/blogs', (req, res) => {
-  db.collection('blogs').save(req.body, (err,result) => {
-    if (err) return console.log(chalk.red('could not save blog') + err);
-    console.log(chalk.green('blog saved'));
+app.post('/posts', (req, res) => {
+  db.collection('posts').save(req.body, (err,result) => {
+    if (err) return console.log(chalk.red('could not save post') + err);
+    console.log(chalk.green('post saved'));
     res.redirect('/');
   })
 })
 
-app.delete('/blogs', (req, res) => {
-  db.collection('blogs').deleteMany({}, (err, result) => {
-    if (err) return console.log(chalk.red('could not delete blog') + err);
-    console.log(chalk.green('blogs deleted'));
+app.delete('/posts', (req, res) => {
+  db.collection('posts').deleteMany({}, (err, result) => {
+    if (err) return console.log(chalk.red('could not delete posts') + err);
+    console.log(chalk.green('posts deleted'));
     res.redirect('/');
   })
 })

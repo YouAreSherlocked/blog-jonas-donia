@@ -1,21 +1,14 @@
 import React, { Component, Fragment } from 'react';
-import Header from '../Header/Header';
-import Welcome from '../Welcome/Welcome';
-import Post from '../Post/Post';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { operations, selectors } from '../../redux';
 
-class Home extends Component {
+class EditPost extends Component {
 
   render() {
     return(
       <Fragment>
-        <Header></Header>
-        <Welcome country={this.props.country}></Welcome>
-        <section id="posts">
-          <Post></Post>
-        </section>
+        <h2>Edit Post</h2>
       </Fragment>
     );
   }
@@ -31,4 +24,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(EditPost);

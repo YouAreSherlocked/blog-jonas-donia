@@ -6,6 +6,7 @@
   font-family: 'Roboto';
   text-decoration: none;
   color: #333;
+  background: none;
 }
 
 h1 {
@@ -13,6 +14,11 @@ h1 {
   margin-bottom: 20px;
   text-transform: uppercase;
   font-weight: 700;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 25px;
 }
 
 h3 {
@@ -36,6 +42,32 @@ nav {
 nav a {
   margin-right: 40px;
 }
+
+section {
+  padding: 0 200px;
+}
+
+button {
+  background-color: #ccc;
+  height: 40px;
+  width: 200px;
+  margin: 0 20px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-group {
+  margin: 40px -20px 20px;
+}
+
+
+
+
+/*----------------------------------*/
 
 #welcome {
   display: flex;
@@ -63,7 +95,7 @@ nav a {
 
 #posts {
   display: block;
-  width: 60%;
+  width: 65%;
   margin: auto;
 }
 
@@ -91,4 +123,41 @@ nav a {
   height: 2px;
   background: #333;
   margin-bottom: 20px;
+}
+
+section#new-post,
+section#edit-post {
+  margin-top: 100px;
+}
+
+form input,
+form textarea {
+  min-width: 600px;
+  border: 2px solid #333;
+  display: block;
+  margin: 5px 0 20px;
+  background: #fff;
+  padding: 5px;
+}
+
+form input {
+  height: 40px;
+}
+
+form input[type=button] {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+form input[type=file] {
+  display: none;
+}
+
+form textarea {
+  height: 160px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
 }
