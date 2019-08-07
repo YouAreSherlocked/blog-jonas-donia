@@ -9,9 +9,6 @@ class Welcome extends Component {
     const end = new Date(2019, 11, 20) ;
     const daysThere = Math.round(Math.abs((now.getTime() - start.getTime()) / (dayInMillis)));
     const daysLeft = Math.round(Math.abs((now.getTime() - end.getTime()) / (dayInMillis)));
-    console.log(now)
-    console.log(end)
-    console.log(start)
     return returning ? daysLeft : daysThere;
   }
 

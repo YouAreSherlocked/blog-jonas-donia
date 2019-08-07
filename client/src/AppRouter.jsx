@@ -16,7 +16,7 @@ class AppRouter extends Component {
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/new" component={NewPost}></Route>
-          <Route exact path="/edit:id" component={EditPost}></Route>
+          <Route exact path="/edit/:id" component={EditPost}></Route>
           <Route component={ErrorPage}></Route>
         </Switch>
       </BrowserRouter>

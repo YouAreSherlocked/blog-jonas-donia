@@ -32,6 +32,9 @@ app.get('/posts', (req, res) => {
 })
 
 app.post('/posts', (req, res) => {
+  req.body.created_at = new Date()
+  req.body.edited_at = new Date()
+  console.log(req.body)
   db.collection('posts').save(req.body, (err,result) => {
     if (err) return console.log(chalk.red('could not save post') + err);
     console.log(chalk.green('post saved'));

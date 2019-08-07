@@ -9,10 +9,11 @@ const getAllPosts = async () => {
 }
 
 const postPost = post => {
+  console.log(...post)
   fetch('/posts', {
     method: 'POST',
     body: JSON.stringify({
-      ...post
+      'date_added':  new Date()
     }),
     headers: {"Content-Type": "application/json"}
     }).then(res => {
