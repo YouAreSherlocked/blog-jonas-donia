@@ -21,7 +21,7 @@ class NewPost extends Component {
         <a href="/">Home</a>
         <section id="new-post">
           <h2>New Post</h2>
-          <form method="post" action="/post" enctype="multipart/form-data">
+          <form method="post" action="/posts">
             <label htmlFor="title">Title</label>
             <input type="text" name="title" />
             <label htmlFor="text">Text</label>

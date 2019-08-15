@@ -7,7 +7,7 @@
   text-decoration: none;
   color: #333;
   background: none;
-}
+} 
 
 h1 {
   font-size: 60px;
@@ -23,12 +23,12 @@ h2 {
 
 h3 {
   font-size: 30px;
-  margin-bottom: 20px;
 }
 
-a:hover {
+a:hover, .link:hover {
   font-weight: 600;
   color: #111;
+  cursor: pointer;
 }
 
 nav {
@@ -108,7 +108,7 @@ button:hover {
   margin-top: 0;
 }
 
-#posts .post * {
+#posts .post > * {
   width: 100%;
 }
 
@@ -123,6 +123,20 @@ button:hover {
   height: 2px;
   background: #333;
   margin-bottom: 20px;
+}
+
+#posts .post .post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#posts .post .post-header h3 {
+  margin-right: 40px;
+}
+
+#posts .post .post-header p {
+  margin: 0 20px;
 }
 
 section#new-post,

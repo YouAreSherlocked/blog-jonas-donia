@@ -5,7 +5,7 @@ import '../../css/index.css';
 
 class ErrorPage extends Component {
 
-  render = () => {
+  render() {
     return (
       <section id="error">
         <div>

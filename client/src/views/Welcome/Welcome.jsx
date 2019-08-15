@@ -16,7 +16,7 @@ class Welcome extends Component {
     return(
       <section id="welcome">
         <p>Updates from</p>
-        <h1>Donia & Jonas</h1>
+        <h1>Blog</h1>
         <div className="infos">
           <p>Days in Adventure&emsp;<b>{this.countDays()}</b></p>
           <p>Days till return&emsp;<b>{this.countDays(true)}</b></p>

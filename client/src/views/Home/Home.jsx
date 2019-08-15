@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Header from '../Header/Header';
-import Welcome from '../Welcome/Welcome';
-import Post from '../Post/Post';
+import Header from '../Header/Header.jsx';
+import Welcome from '../Welcome/Welcome.jsx';
+import Post from '../Post/Post.jsx';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { operations, selectors } from '../../redux';

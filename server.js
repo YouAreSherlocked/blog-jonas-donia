@@ -9,21 +9,21 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 
+const ObjectId = mongoose.Types.ObjectId;
 const app = express();
 const port = process.env.PORT || 5555;
 
-let db;
 const mongoURI = 'mongodb+srv://timo:timo@quotes-cluster-v05ei.azure.mongodb.net/blog-jonas-donia?retryWrites=true&w=majority';
 const mongoClient = require('mongodb').MongoClient;
 
 
-const connection = mongoose.createConnection(mongoURI)
+let db = mongoose.createConnection(mongoURI)
 
 // INIT GFS
 let gfs;
-connection.once('open', () => {
+db.once('open', () => {
   // INIT STREAM
-  gfs = Grid(connection.db, mongoose.mongo);
+  gfs = Grid(db.db, mongoose.mongo);
   gfs.collection('uploads');
 })
 
@@ -49,13 +49,13 @@ const storage = new GridFsStorage({
 const upload = multer({ storage });
 
 // CONNECT TO DATABASE
-/*mongoClient.connect(dbPath, (err, client) => {
-  if (err) return console.log(chalk.bgRed(' CONNECTION ERROR '), err);
-  db = client.db('blog-jonas-donia');
-  app.listen(port, function() {
-    console.log(chalk.green('server is running on port ' + port));
-  })
-})*/
+// mongoClient.connect(mongoURI  , (err, client) => {
+//   if (err) return console.log(chalk.bgRed(' CONNECTION ERROR '), err);
+//   db = client.db('blog-jonas-donia');
+//   app.listen(port, function() {
+//     console.log(chalk.green('server is running on port ' + port));
+//   })
+// })
 
 // MIDLEWARE
 app.listen(port, () => console.log(chalk.green('server is running on port ' + port)))
@@ -65,33 +65,65 @@ app.use(methodOverride('_method'));
 
 
 // POSTS
-/*
+
 app.get('/posts', (req, res) => {
-  db.collection('posts').find().toArray((err, result) => {
+  db.collection('posts').find().sort({ created_at: -1 }).toArray((err, result) => {
     res.send({
       posts: result
     })
   })
 })
 
+app.get(`/post/:id`, (req, res) => {
+  console.log(req.params.id)
+  
+    db.collection('posts').findOne({"_id":ObjectId(req.params.id)}, (err, result) => {
+      if (err) throw err;
+      console.log(result);
+      res.send({
+        post: result
+      })
+    });
+})
+
 app.post('/posts', (req, res) => {
   req.body.created_at = new Date()
   req.body.edited_at = new Date()
   console.log(req.body)
-  db.collection('posts').save(req.body, (err,result) => {
+  db.collection('posts').insertOne(req.body, (err,result) => {
     if (err) return console.log(chalk.red('could not save post') + err);
     console.log(chalk.green('post saved'));
     res.redirect('/');
   })
 })
 
-app.delete('/posts', (req, res) => {
-  db.collection('posts').deleteMany({}, (err, result) => {
-    if (err) return console.log(chalk.red('could not delete posts') + err);
-    console.log(chalk.green('posts deleted'));
+app.put('/posts', (req, res) => {
+  console.log(req.body._id)
+  db.collection('posts')
+  .findOneAndUpdate({_id: ObjectId(req.body._id)}, {
+    $set: {
+      title: req.body.title,
+      text: req.body.text,
+      edited_at: req.body.edited_at
+    }
+  }, {
+    sort: {_id: -1}
+  }, (err, result) => {
+    if (err) return console.log(chalk.red('could not update post') + err);
+    console.log(chalk.green('post updated'));
     res.redirect('/');
   })
-})*/
+})
+
+app.delete('/posts', (req, res) => {
+  console.log(req.body._id)
+  db.collection('posts').deleteOne({ "_id" : ObjectId(req.body._id) }, (err, result) => {
+    if (err) return console.log(chalk.red('could not delete post') + err);
+    
+    console.log(chalk.green(`post with id ${req.body._id} deleted`));
+    res.redirect('/');
+  })
+})
 
 app.post('/post', upload.single('img'),(req, res) => {
   res.json({ file: req.file})
@@ -106,5 +138,4 @@ app.get('/files', (req, res) => {
     }
     return res.json(files)
   })
-  
 })
