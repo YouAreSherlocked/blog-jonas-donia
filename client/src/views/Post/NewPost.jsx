@@ -2,13 +2,25 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { operations, selectors } from '../../redux';
+import * as fetch from '../../services';
 
 class NewPost extends Component {
   
   constructor(props) {
     super(props);
 
+    this.state = {
+      countries: []
+    }
+
     this.openFileUploader = this.openFileUploader.bind(this);
+  }
+
+  async componentDidMount() {
+    const countries = await fetch.countries.getAllCountries();
+    this.setState({
+      ...countries
+    })
   }
 
   openFileUploader() {
@@ -30,12 +42,13 @@ class NewPost extends Component {
             <input type="button" value="Upload Images" onClick={this.openFileUploader}/>
             <input type="file" name="img" alt="Post Images" ref="fileUploader" multiple />
             <label htmlFor="country">Country</label>
+            { this.state.countries ? 
             <select name="country">
-              <option selected>Switzerland</option>
-              <option>USA</option>
-              <option>Mexico</option>
-              <option>Peru</option>
+              { this.state.countries.map((country, i) => (
+                <option key={i}>{ country.name }</option>
+              )) }
             </select>
+            : <p>No countries added yet</p> }
             <div className="btn-group">
               <button className="btn-cancel">Cancel</button>
               <button type="submit" className="btn-submit">Post</button>

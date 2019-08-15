@@ -65,7 +65,6 @@ app.use(methodOverride('_method'));
 
 
 // POSTS
-
 app.get('/posts', (req, res) => {
   db.collection('posts').find().sort({ created_at: -1 }).toArray((err, result) => {
     res.send({
@@ -129,6 +128,39 @@ app.post('/post', upload.single('img'),(req, res) => {
   res.json({ file: req.file})
 })
 
+
+// COUNTRIES
+app.get('/countries', (req, res) => {
+  db.collection('countries').find().sort({ created_at: -1 }).toArray((err, result) => {
+    res.send({
+      countries: result
+    })
+  })
+})
+
+app.post('/countries', (req, res) => {
+  req.body.created_at = new Date()
+  req.body.edited_at = new Date()
+  console.log(req.body)
+  db.collection('countries').insertOne(req.body, (err,result) => {
+    if (err) return console.log(chalk.red('could not save country') + err);
+    console.log(chalk.green('country saved'));
+    res.redirect('/admin');
+  })
+})
+
+app.delete('/countries', (req, res) => {
+  console.log(req.body._id)
+  db.collection('countries').deleteOne({ "_id" : ObjectId(req.body._id) }, (err, result) => {
+    if (err) return console.log(chalk.red('could not delete country') + err);
+    
+    console.log(chalk.green(`country with id ${req.body._id} deleted`));
+    res.redirect('/');
+  })
+})
+
+
+// FILES
 app.get('/files', (req, res) => {
   gfs.files.find().toArray((err, files) => {
     if (!files || files.length === 0) {

@@ -66,7 +66,6 @@ button:hover {
 
 
 
-
 /*----------------------------------*/
 
 #welcome {
@@ -155,7 +154,7 @@ form textarea {
   padding: 5px;
 }
 
-form input {
+input {
   height: 40px;
 }
 
@@ -187,4 +186,35 @@ table > thead {
 
 #admin h3 {
   margin-bottom: 20px;
+}
+
+table form {
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+table form input {
+  min-width: 200px;
+  width: 200px;
+  border: 2px solid #333;
+  padding: 5px;
+  margin-top: 10px;
+  
+}
+
+table form img.arrow-input {
+  transform: rotate(-90deg);
+  height: 20px;
+  
+}
+
+table form button.arrow-input-wrapper {
+  background: none;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  position: relative;
+  top: -57px;
+  right: -162px;
 }
