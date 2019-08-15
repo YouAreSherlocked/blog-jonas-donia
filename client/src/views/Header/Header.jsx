@@ -5,6 +5,7 @@ class Header extends Component {
     return(
       <nav>
         <a href="/new">New Post</a>
+        <a href="/admin">Admin</a>
         <a href="/login">Login</a>
       </nav>
     );

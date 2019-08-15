@@ -25,7 +25,7 @@ class EditPost extends Component {
     e.preventDefault();
     fetch.posts.updatePost(e.target.elements, this.state.post._id)
   }
-  
+
   render() {
     return(
       <Fragment>
@@ -42,6 +42,13 @@ class EditPost extends Component {
             <label htmlFor="imgs">Images</label>
             <input type="button" value="Upload Images" onClick={this.openFileUploader}/>
             <input type="file" name="img" alt="Post Images" ref="fileUploader" multiple />
+            <label htmlFor="country">Country</label>
+            <select name="country">
+              <option>Switzerland</option>
+              <option>USA</option>
+              <option>Mexico</option>
+              <option>Peru</option>
+            </select>
             <div className="btn-group">
               <button className="btn-cancel">Cancel</button>
               <button type="submit" className="btn-submit">Update</button>

@@ -140,7 +140,8 @@ button:hover {
 }
 
 section#new-post,
-section#edit-post {
+section#edit-post,
+section#admin {
   margin-top: 100px;
 }
 
@@ -174,4 +175,16 @@ form textarea {
 form label {
   display: block;
   margin-bottom: 10px;
+}
+
+form select {
+  font-size: 20px;
+}
+
+table > thead {
+  font-weight: 600;
+}
+
+#admin h3 {
+  margin-bottom: 20px;
 }

@@ -6,6 +6,7 @@ import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import EditPost from './views/Post/EditPost';
 import NewPost from './views/Post/NewPost';
+import Admin from './views/Admin/Admin';
 
 class AppRouter extends Component {
     
@@ -17,6 +18,7 @@ class AppRouter extends Component {
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/new" component={NewPost}></Route>
           <Route exact path="/edit/:id" component={EditPost}></Route>
+          <Route exact path="/admin" component={Admin}></Route>
           <Route component={ErrorPage}></Route>
         </Switch>
       </BrowserRouter>
