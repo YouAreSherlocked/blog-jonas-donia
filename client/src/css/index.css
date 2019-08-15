@@ -43,6 +43,13 @@ nav a {
   margin-right: 40px;
 }
 
+button a, button a:hover {
+  width: 100%;
+  height: 100%;
+  font-weight: inherit;
+  color: inherit;
+}
+
 section {
   padding: 0 200px;
 }
@@ -62,6 +69,10 @@ button:hover {
 
 .btn-group {
   margin: 40px -20px 20px;
+}
+
+.go-home {
+  margin: 20px 0 0 20px;
 }
 
 
@@ -103,6 +114,10 @@ button:hover {
   width: 100%;
 }
 
+#posts .post img {
+  margin-bottom: 20px;
+}
+
 #posts .post:first-child {
   margin-top: 0;
 }
@@ -112,7 +127,7 @@ button:hover {
 }
 
 #posts .post p.post-date{
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 #posts .post p.post-date:before {

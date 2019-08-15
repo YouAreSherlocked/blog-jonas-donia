@@ -30,7 +30,7 @@ class Admin extends Component {
     console.log(this.state.countries)
     return(
       <Fragment>
-        <a href="/">Home</a>
+        <a href="/"><p className="go-home">Home</p></a>
         <section id="admin">
           <h2>Admin Section</h2>
           <h3>Countries</h3>

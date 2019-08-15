@@ -29,7 +29,6 @@ class EditPost extends Component {
   render() {
     return(
       <Fragment>
-        <a href="/">Home</a>
         <section id="edit-post">
           <h2>Edit Post <i>{this.state.post.title}</i></h2>
           { this.state.post.text ?
@@ -50,7 +49,7 @@ class EditPost extends Component {
               <option>Peru</option>
             </select>
             <div className="btn-group">
-              <button className="btn-cancel">Cancel</button>
+            <a href="/"><button type="button" className="btn-cancel">Cancel</button></a>
               <button type="submit" className="btn-submit">Update</button>
             </div>
           </form>

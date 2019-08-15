@@ -8,7 +8,8 @@ class Login extends Component {
   render() {
     return(
       <Fragment>
-        <h2>Edit Post</h2>
+        <a href="/"><p className="go-home">Home</p></a>
+        <h2>Login</h2>
       </Fragment>
     );
   }

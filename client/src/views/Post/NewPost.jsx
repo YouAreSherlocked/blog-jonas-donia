@@ -30,7 +30,7 @@ class NewPost extends Component {
   render() {
     return(
       <Fragment>
-        <a href="/">Home</a>
+        <a href="/"><p className="go-home">Home</p></a>
         <section id="new-post">
           <h2>New Post</h2>
           <form method="post" action="/posts">
@@ -50,7 +50,7 @@ class NewPost extends Component {
             </select>
             : <p>No countries added yet</p> }
             <div className="btn-group">
-              <button className="btn-cancel">Cancel</button>
+            <a href="/"><button type="button" className="btn-cancel">Cancel</button></a>
               <button type="submit" className="btn-submit">Post</button>
             </div>
           </form>
