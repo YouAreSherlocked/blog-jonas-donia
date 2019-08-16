@@ -76,13 +76,13 @@ app.get('/posts', (req, res) => {
 app.get(`/post/:id`, (req, res) => {
   console.log(req.params.id)
   
-    db.collection('posts').findOne({"_id":ObjectId(req.params.id)}, (err, result) => {
-      if (err) throw err;
-      console.log(result);
-      res.send({
-        post: result
-      })
-    });
+  db.collection('posts').findOne({"_id":ObjectId(req.params.id)}, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send({
+      post: result
+    })
+  })
 })
 
 app.post('/posts', (req, res) => {
@@ -138,14 +138,59 @@ app.get('/countries', (req, res) => {
   })
 })
 
+app.get(`/countries/:id`, (req, res) => {
+  console.log(req.params.id)
+  
+  db.collection('countries').findOne({"_id": ObjectId(req.params.id)}, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send({
+      country: result
+    })
+  })
+})
+
+app.get(`/countries`, (req, res) => {
+  const c = { a: true } 
+  db.collection('countries').findOne({"current": Object.bsonsize(c)}, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send({
+      country: result
+    })
+  })
+})
+
 app.post('/countries', (req, res) => {
   req.body.created_at = new Date()
   req.body.edited_at = new Date()
+  req.body.curret = false
   console.log(req.body)
   db.collection('countries').insertOne(req.body, (err,result) => {
     if (err) return console.log(chalk.red('could not save country') + err);
     console.log(chalk.green('country saved'));
     res.redirect('/admin');
+  })
+})
+
+
+app.put('/countries', (req, res) => {
+  console.log(req.body)
+  if (!req.body.current) req.body.current = false
+  db.collection('countries')
+  .findOneAndUpdate({ 'name': req.body.name}, {
+    $set: {
+      name: req.body.name,
+      current: req.body.current,
+      edited_at: req.body.edited_at
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  }, (err, result) => {
+    if (err) return console.log(chalk.red('could not update current country') + err);
+    console.log(chalk.green('current country updated'));
+    res.redirect('/');
   })
 })
 

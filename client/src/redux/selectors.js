@@ -1,5 +1,5 @@
-const getCountry = state => state.country;
+const getCurrentCountry = state => state.currentCountry;
 
 export default {
-  getCountry
+  getCurrentCountry
 }

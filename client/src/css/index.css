@@ -163,7 +163,6 @@ form input,
 form textarea {
   min-width: 600px;
   border: 2px solid #333;
-  display: block;
   margin: 5px 0 20px;
   background: #fff;
   padding: 5px;
@@ -199,23 +198,19 @@ table > thead {
   font-weight: 600;
 }
 
-#admin h3 {
-  margin-bottom: 20px;
-}
-
 table form {
   width: auto;
   height: auto;
   display: block;
 }
 
-table form input {
+table form input,
+table form select {
   min-width: 200px;
   width: 200px;
   border: 2px solid #333;
   padding: 5px;
-  margin-top: 10px;
-  
+  margin-top: 20px;
 }
 
 table form img.arrow-input {
@@ -230,6 +225,14 @@ table form button.arrow-input-wrapper {
   height: 40px;
   margin: 0;
   position: relative;
-  top: -57px;
-  right: -162px;
+  top: 2px;
+}
+
+#admin h3 {
+  margin-bottom: 20px;
+}
+
+#admin section {
+  padding: 0;
+  margin-bottom: 40px;
 }

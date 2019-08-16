@@ -8,7 +8,7 @@ const getAllPosts = async () => {
     return body;
 }
 
-const getPostById = async (id) => {
+const getPostById = async id => {
   const response = await fetch(`/post/${id}`);
   const body = await response.json();
   if (response.status !== 200) {

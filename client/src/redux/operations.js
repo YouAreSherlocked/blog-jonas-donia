@@ -1,9 +1,9 @@
 import actions from './actions';
 
-const switchMode = mode => dispatch => {
-    dispatch(actions.switchMode(mode));
+const changeCurrentCountry = name => dispatch => {
+    dispatch(actions.changeCurrentCountry(name));
 }
 
 export default {
-    switchMode
+    changeCurrentCountry
 };

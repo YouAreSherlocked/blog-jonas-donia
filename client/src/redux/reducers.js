@@ -1,14 +1,13 @@
 import types from './types';
 
 const initialState = {
-  darkMode: false,
-  country: "Switzerland"
+  currentCountry: ""
 };
 
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.CHANGE_COUNTRY: {
-      return { ...state, country: action.country };
+    case types.CHANGE_CURRENT_COUNTRY: {
+      return { ...state, currentCountry: action.currentCountry };
     }
     default:
       return state;

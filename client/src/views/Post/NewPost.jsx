@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { operations, selectors } from '../../redux';
+import { selectors } from '../../redux';
 import * as fetch from '../../services';
 
 class NewPost extends Component {

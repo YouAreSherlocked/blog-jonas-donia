@@ -1,10 +1,10 @@
 import types from './types';
 
-export const changeCountry = country => ({
-  type: types.CHANGE_COUNTRY,
-  country: country
+export const changeCurrentCountry = name => ({
+  type: types.CHANGE_CURRENT_COUNTRY,
+  currentCountry: name
 });
 
 export default {
-  changeCountry
+  changeCurrentCountry
 }
